@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 
 async function loginUser(req, res) {
   const user = await userModel.findOne({ email: req.body.email });
-  console.log(user);
+
   if (user == null) {
     return res.status(400).send("Cannot find user");
   }

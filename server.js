@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const { Server } = require("socket.io");
 const app = express();
 
 const jwt = require("jsonwebtoken");
@@ -39,6 +40,26 @@ function authenticateToken(req, res, next) {
 
 const PORT = process.env.PORT || 8000;
 
-app.listen(PORT, function () {
+var server = app.listen(PORT, function () {
   console.log("Server running on http://localhost:" + PORT);
+});
+
+io = require("socket.io")(server, {
+  cors: {
+    origin: "*",
+  },
+});
+
+io.on("connection", function (socket) {
+  console.log("Socket connected:", socket.id);
+  io.emit("firstEvent", "first event");
+
+  socket.on("disconnect", function () {
+    console.log("Socket disconnected:", socket.id);
+  });
+
+  socket.on("send-notification", function (data) {
+    console.log("Received notification:", data);
+    socket.broadcast.emit("new-notification", data);
+  });
 });
