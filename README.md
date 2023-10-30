@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The Real-Time Collaborative Task Management App's backend is responsible for handling the server-side logic of the application. It provides RESTful APIs, handles authentication, and enables real-time functionality using Socket.io. This backend component is built with Node.js and Express, ensuring secure access via JWT-based authentication.
+The Real-Time Collaborative Task Management App's backend is responsible for handling the server-side logic of the application. It provides RESTful APIs, handles authentication. This backend component is built with Node.js and Express, ensuring secure access via JWT-based authentication.
 
 ## API Documentation
 
@@ -73,8 +73,6 @@ Make sure to include the necessary headers and JWT token for authentication when
 The backend of the project utilizes the following technologies:
 
 - **Node.js with Express:** Provides the server-side framework for building RESTful APIs.
-
-- **Socket.io:** Enables real-time functionality and communication with the frontend.
 
 - **JWT (JSON Web Tokens):** Ensures secure user authentication.
 
